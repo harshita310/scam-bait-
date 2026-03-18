@@ -206,4 +206,4 @@ class AgentState(TypedDict):
     lastUpdated: Optional[str]          # Last update timestamp
     agentNotes: str                     # Notes about scammer behavior
     sessionStatus: Optional[str]        # "active" or "closed"
-    callbackSent: bool                  # IDEMPOTENCY: Has final callback been sent?
+    callbackSent: bool                  # IDEMPOTENCY: Has final callback been sent? 
