@@ -19,9 +19,17 @@ from app.config import DATABASE_URL
 
 # Handle SQLAlchemy connection logic
 if DATABASE_URL.startswith("sqlite"):
+    # FIX: Ensure SQLite database is created in a writable directory for Render deployment
+    # Check if we're on Render (RENDER environment variable is present)
+    import os
+    if os.getenv("RENDER"):
+        db_path = "/tmp/honeypot.db"
+        DATABASE_URL = f"sqlite:///{db_path}"
+        print(f"[FIX] Redirecting SQLite to writable path: {db_path}")
+    
     # SQLite specific args
     # FIX: resolve SQLAlchemy threading issue with sessionmaker across async workers
-    connect_args = {"check_same_thread": False, "timeout": 15} 
+    connect_args = {"check_same_thread": False, "timeout": 15}
 else:
     # Postgres specific args
     # - pool_pre_ping: Checks connection before using it (fixes "server closed connection")
