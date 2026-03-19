@@ -80,3 +80,5 @@ services:
     envVars:
       - key: VITE_API_URL
         value: https://honey-api-wr74.onrender.com
+
+# CONFIG: Optimized for Render deployment
