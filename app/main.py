@@ -1,3 +1,4 @@
+from app.agents.extraction import ExtractionAgent
 from app.agents.detection import DetectionAgent
 from app.database import SessionManager
 
@@ -17,6 +18,9 @@ async def honeypot_endpoint(request: HoneypotRequest):
         detection_agent = DetectionAgent()
         det_result = detection_agent.process(request.message.text, session_state)
         session_state.update(det_result)
+        extraction_agent = ExtractionAgent()
+        ext_result = extraction_agent.process(request.message.text, session_state)
+        session_state.update(ext_result)
         reply = "Let me get my glasses..."
         status = "success"
     except Exception as e:
