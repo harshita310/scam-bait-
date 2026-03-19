@@ -47,3 +47,21 @@ class SessionManager:
             db.rollback()
         finally:
             db.close()
+
+    def get_session(self, session_id: str) -> Optional[Dict]:
+        db = SessionLocal()
+        try:
+            record = db.query(UserSession).filter(UserSession.session_id == session_id).first()
+            if record:
+                return json.loads(record.state_json)
+            return None
+        finally:
+            db.close()
+
+    def get_all_sessions(self) -> List[Dict]:
+        db = SessionLocal()
+        try:
+            records = db.query(UserSession).order_by(UserSession.updated_at.desc()).all()
+            return [{"session_id": r.session_id, "updated_at": r.updated_at} for r in records]
+        finally:
+            db.close()
