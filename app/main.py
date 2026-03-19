@@ -10,7 +10,15 @@ async def honeypot_endpoint(request: HoneypotRequest):
     session_state = db_manager.get_session(request.sessionId) or {}
     print(f"Loaded session for {request.sessionId}")
 
-    return {"status": "success", "reply": "Test reply"}
+
+    try:
+        # Placeholder for complex agent workflow
+        reply = "Let me get my glasses..."
+        status = "success"
+    except Exception as e:
+        reply = "I'm sorry, my phone is acting up."
+        status = "error"
+    return {"status": status, "reply": reply}
 
 from fastapi import FastAPI
 
