@@ -120,7 +120,7 @@ scam_bait_bot_tts_web/
 
 1. **Clone and install**
    ```bash
-   git clone https://github.com/diyaavirmani/SCAM-BAIT
+   clone the repo
    cd scam_bait_bot_tts_web
    pip install -r requirements.txt
    pip install -r bot/requirements.txt
