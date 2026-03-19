@@ -222,9 +222,7 @@ We disclose the following **third-party services, libraries, and assets**:
 
 ## License
 
-*MIT License. See [LICENSE](LICENSE).* Copyright (c) 2026 team ARCANE.
-
----
+MIT License. See [LICENSE](LICENSE). Copyright (c) 2026 team ARCANE.
 
 ## Thanks
 
