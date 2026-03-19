@@ -4,8 +4,8 @@ from app.agents.base import BaseAgent
 class ExtractionAgent(BaseAgent):
     def process(self, text: str, state: dict) -> dict:
         entities = {}
-        # Bad basic regex for emails: matching any string with an @
-        emails = re.findall(r"\S+@\S+", text)
+        # Fixed regex for emails
+        emails = re.findall(r"[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+", text)
         if emails:
             entities["emails"] = emails
             
