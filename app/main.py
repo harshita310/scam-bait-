@@ -49,4 +49,5 @@ async def health_check():
 @app.get("/api/v1/stats")
 async def get_stats():
     """Returns aggregated stats for the dashboard."""
+    # Directly query production database for live stats
     return db_manager.get_stats()
