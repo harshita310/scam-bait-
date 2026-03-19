@@ -177,6 +177,20 @@ class SessionManager:
         finally:
             db.close()
 
+    def clear_stale_sessions(self, hours: int = 24):
+        """Utility to clean up sessions older than a certain number of hours."""
+        db = SessionLocal()
+        try:
+            cutoff = datetime.utcnow() - timedelta(hours=hours)
+            db.query(UserSession).filter(UserSession.updated_at < cutoff).delete()
+            db.commit()
+            print(f"[OK] Cleared stale sessions older than {hours}h")
+        except Exception as e:
+            print(f"[ERR] clear_stale_sessions: {e}")
+            db.rollback()
+        finally:
+            db.close()
+
     def get_stats(self) -> Dict:
         """Get aggregated statistics."""
         db = SessionLocal()
