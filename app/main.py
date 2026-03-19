@@ -1,3 +1,4 @@
+from app.agents.detection import DetectionAgent
 from app.database import SessionManager
 
 db_manager = SessionManager()
@@ -13,6 +14,9 @@ async def honeypot_endpoint(request: HoneypotRequest):
 
     try:
         # Placeholder for complex agent workflow
+        detection_agent = DetectionAgent()
+        det_result = detection_agent.process(request.message.text, session_state)
+        session_state.update(det_result)
         reply = "Let me get my glasses..."
         status = "success"
     except Exception as e:
