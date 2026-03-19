@@ -1,3 +1,10 @@
+from app.models import HoneypotRequest, JudgeResponse, ResponseMeta
+
+@app.post("/api/v1/honeypot")
+async def honeypot_endpoint(request: HoneypotRequest):
+    """Main honeypot endpoint stub."""
+    return {"status": "success", "reply": "Test reply"}
+
 from fastapi import FastAPI
 
 app = FastAPI(
