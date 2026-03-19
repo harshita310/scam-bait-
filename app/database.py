@@ -139,6 +139,11 @@ class SessionManager:
         
         print(f"[ERR] DB Save failed after {max_retries} attempts. Data may be lost for this turn.")
 
+    def get_session_history(self, session_id: str) -> list:
+        """Extract just the message history from a session."""
+        session = self.get_session(session_id)
+        return session.get("messages", []) if session else []
+
     def get_all_sessions(self) -> List[Dict]:
         """List all sessions basic info."""
         db = SessionLocal()
