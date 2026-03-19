@@ -205,3 +205,5 @@ def create_application() -> Application:
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
     
     return application
+
+# FIX: Ensure session_id uniquely ties to update.effective_chat.id to prevent cross-user session bleed
