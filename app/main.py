@@ -26,7 +26,8 @@ async def honeypot_endpoint(request: HoneypotRequest):
     except Exception as e:
         reply = "I'm sorry, my phone is acting up."
         status = "error"
-    return {"status": status, "reply": reply}
+        db_manager.save_session(request.sessionId, session_state)
+    return {"status": status, "reply": reply, "extracted": session_state.get("extractedIntelligence", {})}
 
 from fastapi import FastAPI
 
