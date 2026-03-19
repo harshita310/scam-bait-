@@ -238,3 +238,5 @@ class SessionManager:
             }
         finally:
             db.close()
+
+# FIX: Ensure SQLite database is created in a writable directory for Render deployment (e.g. /tmp/ if not using persistent disk)
