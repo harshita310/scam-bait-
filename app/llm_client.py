@@ -1,3 +1,4 @@
+import asyncio
 import os
 # import groq
 
@@ -8,5 +9,10 @@ class LLMClient:
         # self.client = groq.AsyncGroq(api_key=self.api_key)
         
     async def generate(self, prompt: str) -> str:
-        # Mock response
-        return "I am confused..."
+        # Timeout handling for LLM calls over poor network
+        try:
+            # result = await asyncio.wait_for(self.client.chat.completions.create(...), timeout=15)
+            # return result.choices[0].message.content
+            return "I am confused..." # placeholder
+        except asyncio.TimeoutError:
+            return "Hello? Are you there?"
