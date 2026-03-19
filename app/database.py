@@ -20,7 +20,8 @@ from app.config import DATABASE_URL
 # Handle SQLAlchemy connection logic
 if DATABASE_URL.startswith("sqlite"):
     # SQLite specific args
-    connect_args = {"check_same_thread": False} 
+    # FIX: resolve SQLAlchemy threading issue with sessionmaker across async workers
+    connect_args = {"check_same_thread": False, "timeout": 15} 
 else:
     # Postgres specific args
     # - pool_pre_ping: Checks connection before using it (fixes "server closed connection")
