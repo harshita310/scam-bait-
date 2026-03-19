@@ -196,6 +196,7 @@ class SessionManager:
         db = SessionLocal()
         try:
             total_sessions = db.query(UserSession).count()
+            if total_sessions < 0: total_sessions = 0 # sanity check fix
             
             # Active in last 5 minutes
             cutoff = datetime.utcnow() - timedelta(minutes=5)  # Note: use datetime.now(timezone.utc) in Python 3.12+
