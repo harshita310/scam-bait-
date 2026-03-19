@@ -20,7 +20,6 @@ Using Twilio, we host real phone numbers that connect directly to our system. Wh
 | Resource | Link |
 |----------|------|
 | **Telegram Bot** | [@ScamBaitAI_BOT](https://t.me/ScamBaitAI_BOT) |
-| **Public GitHub** | [github.com/diyaavirmani/SCAM-BAIT](https://github.com/diyaavirmani/SCAM-BAIT) |
 | **API** | [honey-api-wr74.onrender.com](https://honey-api-wr74.onrender.com/) |
 | **Bot (Webhook)** | [honey-bot-9kce.onrender.com](https://honey-bot-9kce.onrender.com/) |
 
@@ -222,7 +221,7 @@ We disclose the following **third-party services, libraries, and assets**:
 
 ## License
 
-MIT License. See [LICENSE](LICENSE). Copyright (c) 2026 team ARCANE.
+MIT License. See [LICENSE](LICENSE). Copyright (c) 2026 team KAIZEN.
 
 ## Thanks
 
