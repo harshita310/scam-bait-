@@ -157,6 +157,13 @@ class SessionManager:
         finally:
             db.close()
 
+    def update_intelligence(self, session_id: str, new_intel: dict):
+        """Update specifically the extracted intelligence for a session."""
+        state = self.get_session(session_id)
+        if state:
+            state.setdefault("extractedIntelligence", {}).update(new_intel)
+            self.save_session(session_id, state)
+
     def delete_session(self, session_id: str):
         """Delete a specific session."""
         db = SessionLocal()
