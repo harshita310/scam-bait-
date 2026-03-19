@@ -1,0 +1,14 @@
+import json
+from datetime import datetime, timedelta
+from typing import Optional, Dict, List
+from sqlalchemy import create_engine, Column, String, Text, DateTime, func
+from sqlalchemy.orm import sessionmaker, declarative_base, Session
+import time
+from sqlalchemy.exc import OperationalError
+from app.config import DATABASE_URL
+
+# DATABASE SETUP
+connect_args = {"check_same_thread": False} if DATABASE_URL and DATABASE_URL.startswith("sqlite") else {"keepalives": 1, "keepalives_idle": 30}
+engine = create_engine(DATABASE_URL or "sqlite:///honeypot.db", connect_args=connect_args, pool_pre_ping=True, pool_recycle=300)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
