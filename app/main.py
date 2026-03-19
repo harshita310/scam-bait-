@@ -45,3 +45,8 @@ async def root():
 async def health_check():
     return {"status": "healthy"}
 
+
+@app.get("/api/v1/stats")
+async def get_stats():
+    """Returns aggregated stats for the dashboard."""
+    return db_manager.get_stats()
