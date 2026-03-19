@@ -50,3 +50,6 @@ If the bot doesn't respond:
 1. Check Render logs for errors
 2. Verify `TELEGRAM_BOT_TOKEN` is correct
 3. Ensure `API_BASE_URL` points to your deployed API
+
+## Troubleshooting
+Check logs if webhook fails to bind.
